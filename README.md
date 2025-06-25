@@ -39,3 +39,5 @@ Clone the repo and open any `.md` file to read the notes:
 git clone https://github.com/Divyanshi2408/typescript-notes
 cd typescript-notes
 ```
+## 💬 Contact
+📧 [divyanshipal2808@gmail.com]
