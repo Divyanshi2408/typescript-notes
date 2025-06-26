@@ -12,7 +12,7 @@ Welcome to my **TypeScript Notes Repository** — a concise, developer-friendly 
 | 02      | [Basic Types](./02-basic-types.md)   | string, number, boolean, any, unknown, etc.      |
 | 03      | [Functions](./03-functions.md)       | Return types, parameters, void vs never          |
 | 04      | [Objects & Type Aliases](./04-objects-aliases.md) | `type`, `interface`, structure comparison |
-| 05      | [Union & Intersection](./05-unions-intersections.md) | `|`, `&`, narrowing, guards      |
+| 05      | [Union & Intersection](./05-unions-intersections.md) | `\|`, `&`, narrowing, guards      |
 | 06      | [Advanced Types](./06-advanced-types.md) | `keyof`, `typeof`, `as`, `infer`, etc.      |
 | 07      | [Interfaces](./07-interfaces.md)     | Interface basics, extending, readonly, optional  |
 | 08      | [Classes & OOP](./08-classes-oop.md) | OOP concepts, modifiers, abstract, implements    |
@@ -39,5 +39,8 @@ Clone the repo and open any `.md` file to read the notes:
 git clone https://github.com/Divyanshi2408/typescript-notes
 cd typescript-notes
 ```
+
+---
+
 ## 💬 Contact
 📧 [divyanshipal2808@gmail.com]
