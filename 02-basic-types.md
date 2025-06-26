@@ -116,3 +116,51 @@ let result: Status = Status.Success;
 | Arrays   | List of values of a single type             |
 | Tuples   | Fixed-size array with specific types        |
 | Enums    | Named constants (numeric or string values)  |
+
+## ✅ TypeScript Interview Q&A
+
+### Q1. What’s the difference between `any` and `unknown`?
+- `any` bypasses all type checking.
+- `unknown` is safer—you must do a type check before using it.
+- ✅ Prefer `unknown` over `any` when you don’t know the type yet.
+
+---
+
+### Q2. What is the use of the `never` type?
+Indicates a function that never returns (e.g., throws an error or enters an infinite loop).
+
+```ts
+function fail(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+---
+
+### Q3. What is the key difference between `void` and `never`?
+
+| Feature  | `void`               | `never`                            |
+|----------|----------------------|-------------------------------------|
+| Returns  | No value             | Never returns                       |
+| Example  | Logging function     | Error throwing or infinite loop     |
+| Usage    | `function foo(): void {}` | `function foo(): never {}`         |
+
+---
+
+### Q4. Why are string enums considered safer than numeric enums in frontend applications?
+- String enums provide more readable values (`"SUCCESS"` vs `0`).
+- Less prone to bugs due to accidental number misassignment.
+
+---
+
+### Q5. Is `number[]` the same as `Array<number>`?
+✅ Yes, both are equivalent:
+
+```ts
+let arr1: number[] = [1, 2];
+let arr2: Array<number> = [1, 2];
+```
+
+- Use `number[]` for simplicity.
+- `Array<Type>` is preferred in generic contexts.
+
