@@ -95,3 +95,55 @@ type Employee = Person & {
 | Interface            | Define object structure with extendable, mergeable types      |
 | `interface` vs `type`| Interfaces are better for objects, types for flexibility       |
 | Extensions           | Both can be extended (`extends` or `&`)                       |
+
+
+## Interview / Tricky Questions for “Objects & Type Aliases”
+
+### Q1. What are the key differences between `type` and `interface` in TypeScript?
+- `interface` supports **declaration merging**; `type` does not.
+- `type` can define **primitives, unions, tuples**; `interface` cannot.
+- Both support extension, but their syntax differs.
+
+---
+
+### Q2. Can you extend a `type` from an `interface` or vice versa?
+✅ Yes.
+
+```ts
+interface A {
+  name: string;
+}
+
+type B = A & { age: number }; // type extends interface
+
+type X = { id: number };
+
+interface Y extends X {}      // interface extends type
+```
+
+---
+
+### Q3. When would you choose `type` over `interface`?
+- When you need to define **unions**, **tuples**, or use **complex types**
+- When you need **flexibility in generic constraints**
+
+---
+
+### Q4. Can interfaces have optional properties? What about `readonly`?
+✅ Yes, both are supported.
+
+```ts
+interface User {
+  name: string;
+  age?: number;
+  readonly id: string;
+}
+```
+
+---
+
+### Q5. Why is `interface` preferred for public APIs?
+- **Declaration merging** allows for extendability.
+- Better **tooling support** (especially in libraries/SDKs).
+- Interfaces clearly represent **structured object contracts**.
+
