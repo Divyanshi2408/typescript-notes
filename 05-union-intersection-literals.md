@@ -74,3 +74,47 @@ function describe(vehicle: Car | Boat) {
 | `typeof` Check          | Used to check primitive types like `string`, `number`, etc.|
 | `in` Operator           | Used to check properties in object union types             |
 
+
+## Interview / Tricky Questions for “Union & Intersection Types”
+
+### Q1. When would you use a union vs. an intersection?
+- Use **union (`|`)** when a value can be one of many types.
+- Use **intersection (`&`)** when a value should have all types’ properties.
+
+---
+
+### Q2. How does TypeScript narrow union types?
+Through **type guards** such as:
+- `typeof` (for primitives)
+- `in` operator (for objects)
+- `instanceof` (for classes)
+
+---
+
+### Q3. What is a discriminated union?
+A **union of types** that share a common **literal property** (e.g., `kind`) used to narrow the type with `switch-case`.
+
+---
+
+### Q4. Can you use unions with literal types? Why is that useful?
+✅ Yes! It restricts values to a defined set.
+
+```ts
+type Mode = "dark" | "light";
+```
+
+Useful for:
+- UI themes
+- HTTP methods
+- Status codes
+
+---
+
+### Q5. What happens if two intersected types have conflicting property types?
+❌ TypeScript throws an error due to incompatible type intersection:
+
+```ts
+type A = { id: string };
+type B = { id: number };
+// type C = A & B; // ❌ Error: Type 'string' is not assignable to type 'number'
+```
