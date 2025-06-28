@@ -78,4 +78,38 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 | useRef           | Use generics like `useRef<HTMLInputElement>(null)`                |
 | ReactNode        | Use `React.ReactNode` for reusable children props                 |
 
+## Interview / Tricky Questions
 
+### Q1. Why is `useRef<HTMLInputElement>(null)` used?
+To safely reference **DOM elements** in functional components using TypeScript.
+
+---
+
+### Q2. What's the difference between `React.FC<Props>` and explicitly typed props?
+
+| Feature         | `React.FC`                 | Explicit Props               |
+|------------------|-----------------------------|-------------------------------|
+| Children Support | ✅ Included automatically     | ❌ Must be added manually      |
+| Default Props    | ❌ Not inferred automatically | ✅ Works better                |
+| Community Usage  | ⚠️ Optional                  | ✅ Recommended by many teams   |
+
+---
+
+### Q3. How do you type event handlers in TypeScript?
+
+```tsx
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+```
+
+---
+
+### Q4. How do you handle dynamic form inputs?
+
+```tsx
+type FormFields = "name" | "email";
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const field: FormFields = e.target.name as FormFields;
+};
+```
