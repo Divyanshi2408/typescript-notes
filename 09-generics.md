@@ -98,3 +98,57 @@ const updateUser = (user: Partial<User>) => {
 | Generic Classes      | Reusable class logic for multiple types                        |
 | Constraints (`extends`) | Restrict types to have specific structure                 |
 | Utility Generics     | Built-in helpers like `Partial`, `Readonly`, `Pick`, etc.      |
+
+## 🧬 Interview / Tricky Questions for “Generics in TypeScript”
+
+### Q1. What is the benefit of using generics in TypeScript?
+- Enables **type-safe reuse**
+- Eliminates need to use `any`
+- Prevents duplication for each data type
+
+---
+
+### Q2. Can interfaces or classes use multiple generics?
+✅ Yes.
+
+```ts
+interface Result<T, E> {
+  data: T | null;
+  error: E | null;
+}
+```
+
+---
+
+### Q3. What does `extends` do in generic constraints?
+- Limits the kind of types that can be passed
+- Helps access certain properties (like `.length`)
+
+```ts
+function logItem<T extends { length: number }>(item: T): void {
+  console.log(item.length);
+}
+```
+
+---
+
+### Q4. When would you use `Record<K, T>`?
+Use it when you need an object with **dynamic keys** of specific type `K` and **uniform value type** `T`.
+
+```ts
+type UserRoles = Record<string, "admin" | "user">;
+```
+
+---
+
+### Q5. Can you explain how `Partial<T>` works internally?
+✅ Yes. It’s a **mapped type**:
+
+```ts
+type Partial<T> = {
+  [K in keyof T]?: T[K];
+};
+```
+
+🔹 Adds optional (`?`) to all properties of `T`.
+
