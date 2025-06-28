@@ -103,3 +103,57 @@ type Result = GetReturnType<() => number>; // number
 | `typeof`          | Gets the type of a value or variable                              |
 | `in`              | Used in mapped types to iterate over keys                         |
 | `infer`           | Extracts type in conditional types                                |
+
+
+## 🧠 Interview / Tricky Questions for “Advanced Types”
+
+### Q1. What is the difference between `keyof` and `typeof`?
+- `typeof`: Extracts the **type** from a **value**.
+- `keyof`: Gets the **keys** from a **type** as a **string literal union**.
+
+```ts
+const user = { name: "Divyanshi", age: 22 };
+type Keys = keyof typeof user; // "name" | "age"
+```
+
+---
+
+### Q2. What does `infer` do in TypeScript?
+It lets you **infer a type** inside a **conditional type** — useful for extracting part of a complex type.
+
+```ts
+type GetPromiseReturn<T> = T extends Promise<infer R> ? R : never;
+
+type Result = GetPromiseReturn<Promise<string>>; // string
+```
+
+---
+
+### Q3. How are mapped types used with `in`?
+You use `in` with `keyof` to **create new types** based on keys from another type.
+
+```ts
+type Person = {
+  name: string;
+  age: number;
+};
+
+type ReadOnlyPerson = {
+  readonly [K in keyof Person]: Person[K];
+};
+```
+
+---
+
+### Q4. When should you use type assertions (`as`)?
+✅ Use `as` when:
+- You know the type better than the compiler (e.g., DOM elements).
+- You're narrowing unknown types after runtime checks.
+
+⚠️ Avoid overusing `as any` — it defeats TypeScript’s safety.
+
+---
+
+### Q5. Can `infer` be used outside conditional types?
+❌ No. `infer` only works within the `extends` clause of **conditional types**.
+
