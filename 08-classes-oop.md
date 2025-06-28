@@ -120,3 +120,47 @@ class Report implements Printable {
 | Implementing Interfaces    | Enforce structure on class using interfaces               |
 
 
+## 🧱 Interview / Tricky Questions for “Classes & OOP”
+
+### Q1. What’s the difference between `private`, `protected`, and `public` in TypeScript?
+
+- `private`: Only accessible inside the class.
+- `protected`: Accessible inside the class and subclasses.
+- `public`: Accessible from anywhere (default).
+
+---
+
+### Q2. When would you use an abstract class over an interface?
+
+- Use **abstract classes** when you want to **share base implementation** and **enforce contracts**.
+- Use **interfaces** when you only need to **enforce structure** (and support multiple inheritance).
+
+---
+
+### Q3. Can a class implement multiple interfaces in TypeScript?
+✅ Yes.
+
+```ts
+interface A { foo(): void; }
+interface B { bar(): void; }
+
+class MyClass implements A, B {
+  foo() {}
+  bar() {}
+}
+```
+
+---
+
+### Q4. What is the use of `readonly` in class properties?
+
+It makes the property **immutable after initialization** — similar to constants.
+
+---
+
+### Q5. How does inheritance differ from implementation in TypeScript?
+
+| Term       | Meaning                                |
+|------------|----------------------------------------|
+| `extends`  | Inherit from another class             |
+| `implements` | Enforce structure based on interface |
