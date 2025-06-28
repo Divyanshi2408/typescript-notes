@@ -76,4 +76,55 @@ const item: Product = {
 | `readonly` Property    | Makes the property immutable after assignment           |
 | Optional Property (`?`)| Allows a property to be omitted                         |
 
+## 📘 Interview Questions for “Interfaces”
+
+### Q1. How is an `interface` different from a `type` alias?
+- `interface` supports **declaration merging**, `type` does not.
+- `type` is more **flexible** (can describe primitives, unions, etc.).
+
+---
+
+### Q2. Can interfaces have methods? Can they be optional?
+✅ Yes. Example:
+
+```ts
+interface Clock {
+  now(): Date;
+  reset?(): void;
+}
+```
+
+---
+
+### Q3. Can a class implement multiple interfaces?
+✅ Yes.
+
+```ts
+interface Printable { print(): void; }
+interface Scannable { scan(): void; }
+
+class Machine implements Printable, Scannable {
+  print() {}
+  scan() {}
+}
+```
+
+---
+
+### Q4. What happens if you declare an interface twice?
+TypeScript **merges them**:
+
+```ts
+interface A { name: string; }
+interface A { age: number; }
+
+const a: A = { name: "Divyanshi", age: 22 }; // ✅ Valid
+```
+
+---
+
+### Q5. When should you use `interface` over `type` alias?
+- When defining **object shapes** or **class contracts**
+- When you want **declaration merging**
+- When using **third-party library APIs**
 
