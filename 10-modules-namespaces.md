@@ -76,4 +76,48 @@ console.log(Geometry.area(5, 10));
 | Namespaces        | Legacy way to organize code in the global scope                  |
 | Recommendation    | Use modules for modern TypeScript projects                       |
 
+## 📦 Interview / Tricky Questions for “Modules & Namespaces”
+
+### Q1. What is the main difference between a `module` and a `namespace` in TypeScript?
+
+| Aspect        | Module (ESM)              | Namespace                     |
+|---------------|----------------------------|-------------------------------|
+| Scope         | File-based                 | Global                        |
+| Syntax        | `import` / `export`        | `namespace {}`                |
+| Use Case      | Modern apps                | Script-based projects         |
+| Tree-shaking  | ✅ Supported                | ❌ Not supported               |
+
+---
+
+### Q2. Can a file be both a module and a script in TypeScript?
+❌ No.  
+- If a file uses `import` or `export`, it is treated as a **module** and has its own scope.  
+- Otherwise, it’s a **script**, and all declarations live in the global scope.
+
+---
+
+### Q3. What is a **barrel file** and when should you use it?
+A **barrel file** is an `index.ts` file that **re-exports members** from other modules.  
+It helps in **organizing** and **simplifying import paths**.
+
+---
+
+### Q4. Can you use **default and named exports** together?
+✅ Yes, but imports need to match:
+
+```ts
+// lib.ts
+export default function main() {}
+export const helper = () => {};
+
+// usage:
+import main, { helper } from "./lib";
+```
+
+---
+
+### Q5. Why are `namespaces` discouraged in modern TypeScript development?
+- They **pollute the global scope**
+- Not compatible with **module bundlers** (Webpack, Vite, etc.)
+- **Better alternatives** exist using `import` / `export`
 
